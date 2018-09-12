@@ -4,6 +4,7 @@ import com.rw.payment.dto.basket.BasketOrder;
 import com.rw.payment.dto.ErrorMessage;
 import com.rw.payment.security.User;
 import com.rw.payment.services.BasketService;
+import com.rw.payment.services.FreePaymentService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,6 @@ public class BasketController extends BaseController{
                             @ResponseHeader(name = "ETag", response = String.class, description = "Хеш для кэширования")}),
             @ApiResponse(code = 304, message = "Not Modified")
     })
-
     public List<BasketOrder> getOrders(@PathVariable(value = "basketId", required = false) @ApiParam(value="Уникальный идентификатор корзины заказов, полученный при создании первого заказа. Необязательный: если не передаётся, то возвращается информация об активной карзине, если она есть", example = "74835926988082", required = false) String basketId, @RequestHeader(name="IF-NONE-MATCH", required = false) @ApiParam(name="IF-NONE-MATCH", value = "ETag из предыдущего закэшированного запроса") String inm, @RequestAttribute(value = "user", required = false) User user) {
         return basketService.getBasketOrders(basketId, user);
     }

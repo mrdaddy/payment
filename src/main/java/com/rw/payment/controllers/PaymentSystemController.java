@@ -1,5 +1,8 @@
 package com.rw.payment.controllers;
 
+import com.rw.payment.dto.basket.BasketOrder;
+import com.rw.payment.security.User;
+import com.rw.payment.services.FreePaymentService;
 import com.rw.payment.services.PaymentSystemService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,9 @@ public class PaymentSystemController extends BaseController{
     @Autowired
     PaymentSystemService paymentSystemService;
 
+    @Autowired
+    FreePaymentService freePaymentService;
+
     @RequestMapping(method = RequestMethod.GET, path = "/{basketId}")
     @ApiOperation(value = "Получение списка доступных платёжных систем для оплаты картины заказов. Сервис возвращает список идентификаторов доступных платёжных систем", authorizations = @Authorization("jwt-auth"))
     @ResponseStatus( HttpStatus.OK)
@@ -36,4 +42,10 @@ public class PaymentSystemController extends BaseController{
         return paymentSystemService.selectPS(basketId, psId);
     }
 
+    @RequestMapping(method = RequestMethod.POST, path = "/free")
+    @ApiOperation(value = "Оформление заказов из корзины заказов (заказа), стоимость которой равно нулю", authorizations = @Authorization("jwt-auth"))
+    @ResponseStatus( HttpStatus.CREATED)
+    public List<BasketOrder> offerBasketWithNoPrice(@RequestParam(value = "basketId", required = false) @ApiParam(value="Уникальный идентификатор корзины заказов, полученный при создании первого заказа. Необязательный: если не передаётся, то возвращается информация об активной карзине, если она есть", example = "74835926988082", required = false) String basketId, @RequestAttribute(value = "user", required = false) User user) {
+        return freePaymentService.offerBasketWithNoPrice(basketId, user);
+    }
 }
