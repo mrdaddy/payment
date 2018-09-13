@@ -2,12 +2,16 @@ package com.rw.payment.dto.basket;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @ApiModel(description = "Информация о корзине заказов")
+@AllArgsConstructor
+@NoArgsConstructor
 public class BasketOrder {
     public enum ORDER_STATUS {B, I, P}
     public enum ORDER_TYPE {NUMBERED, UNNUMBERED}
