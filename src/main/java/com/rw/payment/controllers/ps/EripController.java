@@ -6,10 +6,11 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_XML_VALUE, path = "/${service.version}/payment/ps/erip")
-@Api(hidden = true)
+@ApiIgnore
 public class EripController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class EripController {
         return eripService.transactionResult(request);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/stornresult")
+    @RequestMapping(method = RequestMethod.POST, path = "/stornstart")
     @ResponseBody
     public StornStartResponse stornStart(@RequestParam StornStartRequest request) {
         return eripService.stornStart(request);

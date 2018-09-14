@@ -16,6 +16,8 @@ public class BasketDao {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public List<BasketOrder> getBasketOrders(String basketId) {
-        return new ArrayList<>();
+        List<BasketOrder> list = new ArrayList<>();
+        list.add(new BasketOrder());
+        return list;
     }
 }
