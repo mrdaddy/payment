@@ -22,7 +22,7 @@ import java.util.List;
 
 @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad request", response = ErrorMessage.class, responseContainer = "List"),
-        @ApiResponse(code = 503, message = "Service Unavailable"),
+        @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorMessage.class, responseContainer = "List"),
         @ApiResponse(code = 504, message = "Gateway Timeout")
 })
 @PreAuthorize("hasRole('U')")
