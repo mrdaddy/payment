@@ -9,9 +9,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class Order extends ShortOrder {
     private String ordernumber;
-    private String billnumber;
     private int testmode;
     private String ordercomment;
     private double orderamount;
@@ -25,7 +24,6 @@ public class Order {
 
     private String fraud_state;
     private String fraud_reason;
-    private String packetdate;
     private String signature;
     private String checkvalue;
 

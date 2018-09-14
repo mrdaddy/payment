@@ -14,5 +14,5 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PushPaymentResult {
     private int firstcode;
     private int secondcode;
-    private Order order;
+    private ShortOrder order;
 }
