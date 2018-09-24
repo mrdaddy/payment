@@ -25,7 +25,7 @@ public class BasketOrder {
     @ApiModelProperty(example = "NUMBERED", required = true, value = "Тип заказа. Значения: NUMBERED - заказы с нумерованными местами, UNNUMBERED - заказы с ненумерованными местами", dataType = "String")
     private ORDER_TYPE orderType;
 
-    @ApiModelProperty(example = "B", required = true, value = "Статус заказа. Значения: B - куплен в АСУ Экспресс, I - в оплате, P - оплачен", dataType = "String")
+    @ApiModelProperty(example = "B", required = true, value = "Статус заказа. Значения: B - куплен в АСУ Экспресс или ЭПД, I - в оплате, P - оплачен", dataType = "String")
     private ORDER_STATUS status;
 
     @ApiModelProperty(required = true, value = "Дата и время начала оплаты", dataType = "Datetime")

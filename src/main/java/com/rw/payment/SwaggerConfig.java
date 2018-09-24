@@ -35,8 +35,8 @@ public class SwaggerConfig {
                 .title("Сервис оплаты ЭПД на поезда с нумерованными и ненумерованными местами")
                 .description("Сервис включает в себя список операций для подготовки к оплате корзины заказов")
                 .version("v1")
-                .license("")
-                .licenseUrl("")
+                .license("БЖД")
+                .licenseUrl("https://www.rw.by/")
                 .build();
     }
 }

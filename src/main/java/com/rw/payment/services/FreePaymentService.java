@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @Validated
 public class FreePaymentService {
-    public List<BasketOrder> offerBasketWithNoPrice(@Valid @Size(max = 20) String basketId, @Valid @NotNull User user) {
+    public List<BasketOrder> offerBasketWithoutPayent(@Valid @Size(max = 20) String basketId, @Valid @NotNull User user) {
         return new ArrayList<>();
     }
 }
