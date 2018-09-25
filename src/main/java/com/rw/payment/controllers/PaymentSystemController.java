@@ -38,7 +38,7 @@ public class PaymentSystemController extends BaseController{
 
     @RequestMapping(method = RequestMethod.PUT, path = "/{basketId}")
     @ApiOperation(value = "Выбор платёжной системы для оплаты корзины заказов.", authorizations = @Authorization("jwt-auth"))
-    @ResponseStatus( HttpStatus.ACCEPTED)
+    @ResponseStatus( HttpStatus.NO_CONTENT)
     public
     void selectPS(@PathVariable(value = "basketId") @Valid @Size(max = 20) @ApiParam(value="Уникальный идентификатор корзины заказов, полученный при создании первого закака", example = "74835926988082", required = true) String basketId,
                   @RequestParam(value = "psId") @ApiParam(value="Уникальный идентификатор платёжной системы", example = "ERIP", required = true) String psId,

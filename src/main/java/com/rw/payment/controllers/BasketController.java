@@ -24,7 +24,7 @@ public class BasketController extends BaseController{
     @Autowired
     BasketService basketService;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{basketId}")
+    @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Получение состояния оплаты корзины заказов (заказа)", authorizations = @Authorization("jwt-auth"))
     @ResponseStatus( HttpStatus.OK)
     @ApiResponses(value = {
@@ -33,7 +33,7 @@ public class BasketController extends BaseController{
                             @ResponseHeader(name = "ETag", response = String.class, description = "Хеш для кэширования")}),
             @ApiResponse(code = 304, message = "Not Modified")
     })
-    public List<BasketOrder> getOrders(@PathVariable(value = "basketId", required = false) @ApiParam(value="Уникальный идентификатор корзины заказов, полученный при создании первого заказа. Необязательный: если не передаётся, то возвращается информация об активной карзине, если она есть", example = "74835926988082", required = false) String basketId,
+    public List<BasketOrder> getOrders(@RequestParam(value = "basketId", required = false) @ApiParam(value="Уникальный идентификатор корзины заказов, полученный при создании первого заказа. Необязательный: если не передаётся, то возвращается информация об активной карзине, если она есть", example = "74835926988082", required = false) String basketId,
                                        @RequestHeader(name="IF-NONE-MATCH", required = false) @ApiParam(name="IF-NONE-MATCH", value = "ETag из предыдущего закэшированного запроса") String inm,
                                        @RequestAttribute(value = "user", required = false) @ApiIgnore User user) {
         return basketService.getBasketOrders(basketId, user);
